@@ -11,20 +11,36 @@
     <h1>Student Attendance</h1>
     <div class="head">
     <form id="form-date" class="date">
-    <input type="date" name="date">
-    <button type="submit">Search</button>
+    <input class="select" type="date" name="date" required>
+    <button type="submit" class="search">Search</button>
     </form>
     <button id="fetch">Fetch Attendance Report</button>
 </div>
-<div class="students">
+<div id="students">
     <form id="form">
+        <!-- <div class="form">
+            <div>
 <p>Ranvijay Singh</p>
-<input type="radio" id="present" name="age" value="Present">
+</div>
+<div class="field">
+<input type="radio" class="present" name="status" value="present">
 <label for="present">Present</label>
-<input type="radio" id="absent" name="age" value="absent">
+<input type="radio" class="absent" name="status" value="absent">
 <label for="absent">Absent</label>
+</div>
+</div> -->
+
 
 </form>
 </div>
+<div id='attendanceData'>
+    <div class="new">
+    <!-- <p>Ranvijay Singh</p>
+    <p>Present</p> -->
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.3/axios.min.js" integrity="sha512-JWQFV6OCC2o2x8x46YrEeFEQtzoNV++r9im8O8stv91YwHNykzIS2TbvAlFdeH0GVlpnyd79W0ZGmffcRi++Bw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="script.js"></script>
 </body>
 </html>
