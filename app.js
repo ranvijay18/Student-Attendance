@@ -6,36 +6,47 @@ const bodyParser = require('body-parser');
 
 const sequelize = require('./util/database')
 const Student = require('./model/student');
-const Date = require('./model/date');
 const Attendance = require('./model/attendance');
 
 const app = express();
+
+const studentRouter = require('./route/student');
 
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.json());
 app.use(cors());
 
+app.use(studentRouter);
 
 
 
-Student.belongsTo(Date, {through: Attendance});
-Date.belongsTo(Student, {through : Attendance});
-Student.hasMany(Attendance);
-Attendance.belongsTo(Student);
-Date.hasMany(Attendance);
-Attendance.belongsTo(Date);
+
+Attendance.belongsTo(Student, {
+    onDelete: 'CASCADE', // delete attendance related to a deleted student
+  });
+  
 
 
 
 
 
 sequelize.sync()
+// .then(() => {
+//     const student = Student.bulkCreate([
+//         { name: 'Jane Smith'},
+//         { name: 'Bob Johnson'},
+//         { name: 'Ranvijay'},
+//         { name: 'Taiyaba'},
+//         { name: 'Nisha'},
+
+//       ]);
+//       return student;
+// })
 .then(() => {
     app.listen(8000);
 })
 .catch(err => {
     console.log(err);
 })
-
 
